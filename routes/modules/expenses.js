@@ -1,15 +1,15 @@
 const express = require('express')
 const router = express.Router()
-const Expense = require('../../models/expense')
+// const Expense = require('../../models/expense')
 
 router.get('/new', (req, res) => {
-  return res.render('new')
+  // return res.render('new')
 })
 router.post('/', (req, res) => {
-  const 
+  
 })
 router.get('/:id/edit', (req, res) => {
-  const 
+  
 })
 router.put('/:id', (req, res) => {
 
