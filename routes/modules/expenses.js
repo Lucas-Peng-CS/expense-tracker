@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
-// const Expense = require('../../models/expense')
+const Record = require('../../models/record')
+const Category = require("../../models/category");
 
 router.get('/new', (req, res) => {
   // return res.render('new')

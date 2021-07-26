@@ -5,6 +5,6 @@ const expenses = require('./modules/expenses')
 
 
 router.use('/', home)
-router.use('expenses', expenses)
+router.use('/expenses', expenses)
 
 module.exports = router;
