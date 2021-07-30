@@ -1,0 +1,62 @@
+<form class="w-25 mx-auto" action="/expenses" method="POST">
+  <div class="remind my-3">
+    <span>*必填欄位</span>
+    <span class="ml-5">請輸入你的支出</span>
+  </div>
+
+  <div class="form-group d-flex text-nowrap">
+    <label for="name" class="align-self-end">名稱* :</label>
+    <input
+      type="text"
+      class="form-control ml-4"
+      name="name"
+      id="name"
+      placeholder="請輸入開支名稱..."
+      required
+    />
+  </div>
+
+  <div class="form-group d-flex text-nowrap">
+    <label for="category" class="align-self-end">類別* :</label>
+    <select class="custom-select ml-4" name="category" id="category" required>
+      <option value="" selected disabled>Select</option>
+      {{#each categories}}
+      <option value="{{this.name}}">{{this.name}}</option>
+      {{/each}}
+    </select>
+  </div>
+
+  <div class="form-group d-flex text-nowrap">
+    <label for="date" class="align-self-end">日期* :</label>
+    <input
+      type="date"
+      class="form-control ml-4"
+      name="date"
+      id="date"
+      placeholder="請輸入開支日期..."
+      required
+    />
+  </div>
+
+  <div class="form-group d-flex text-nowrap">
+    <label for="amount" class="align-self-end">金額* :</label>
+    <input
+      type="number"
+      class="form-control ml-4"
+      name="amount"
+      id="amount"
+      placeholder="請輸入開支金額..."
+      min="0"
+      required
+    />
+  </div>
+
+  <div class="text-right">
+    <button
+      id="submit-btn"
+      type="submit"
+      class="btn btn-warning text-light w-75"
+    >新增支出</button>
+  </div>
+
+</form>

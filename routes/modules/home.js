@@ -5,19 +5,22 @@ const Category = require("../../models/category");
 
 router.get("/", (req, res) => {
   let totalAmount = 0;
-  const categories = Category.find().lean();
-  Record.find()
+  Category.find()
     .lean()
-    .sort({ date: "asc" })
-    .then((records) => {
-      records.forEach((record) => {
-        totalAmount += record.amount;
-      });
-      res.render("index", {
-        records,
-        categories,
-        totalAmount,
-      });
+    .then((categories) => {
+      Record.find()
+        .lean()
+        .sort({ date: "desc" })
+        .then((records) => {
+          records.forEach((record) => {
+            totalAmount += record.amount;
+          });
+          res.render("index", {
+            records,
+            categories,
+            totalAmount,
+          });
+        });
     })
     .catch((error) => console.error(error));
 });

@@ -4,9 +4,16 @@ const Record = require('../../models/record')
 const Category = require("../../models/category");
 
 router.get('/new', (req, res) => {
-  // return res.render('new')
+  Category.find()
+    .lean()
+    .then((categories) => res.render("new", { categories }))
+    .catch((error) => console.error(error));
 })
 router.post('/', (req, res) => {
+  const data = req.body
+  return Record.create(data)
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
   
 })
 router.get('/:id/edit', (req, res) => {

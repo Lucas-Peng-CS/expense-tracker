@@ -5,10 +5,6 @@ const recordSchema = new Schema({
     type: String,
     required: true,
   },
-    target: {
-    type: String,
-    required: true,
-  },
     category: {
     type: String,
     required: true,

@@ -1,10 +1,11 @@
 <div class="container">
-  <div class="row">
-    <div class="col-6 mx-auto">
+  <div class="row ">
+    <div class="col-4 mx-auto">
       <form action="">
         <div class="form-group">
-          <select class="form-control mt-5" id="exampleFormControlSelect1">
-            <option>類別</option>
+          <select class="form-control mt-4" id="exampleFormControlSelect1">
+            {{!-- selected disabled 選擇功能關閉 --}}
+            <option selected disabled>類別</option>
             <option value="家居物業">家居物業</option>
             <option value="交通出行">交通出行</option>
             <option value="休閒娛樂">休閒娛樂</option>
@@ -17,18 +18,46 @@
   </div>
   <div class="row justify-content-center">
     <div class="col-1 align-self-center">總金額:</div>
-    <div class="col-5 totalAmount" style="color:rgb(250, 197, 137)">
+    <div class="col-3 totalAmount text-right mr-2" style="color:rgb(250, 197, 137)">
       <h1>{{this.totalAmount}}</h1>
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-4 mx-auto table-striped">
+      <table class="w-100">
+        <tbody>
   {{#each records}}
-  <div class="container">
-  {{!-- {{#each categories}}
-  {{this.icon}}
-  {{/each}} --}}
-  {{this.category}}
-  {{this.name}}{{this.date}}{{this.amount}}
-  </div>
+  <tr>
+  <td class=" pt-2 text-center">
+  
+  {{#each ../categories}}
+  {{!-- handlebars-helper is 功能  a === b 就渲染 --}}
+  {{#is ../this.category this.name}}
+  <span style="color:rgb(0, 174, 255)">{{{this.icon}}}</span>
+  {{/is}}
   {{/each}}
+  </td>
+  <td>
+  <div class="d-flex flex-column py-1">
+  <span>{{this.name}}</span>
+  <small>{{this.date}}</small>
+  </div>
+  </td>
+  <td class="text-right pr-2">
+  {{this.amount}}
+  </td>
+  
+
+  </tr>
+  {{/each}}
+  </tbody>
+  </table>
+  
+  
+  </div>
+  </div>
+  <div class="text-center">
+  <a class="btn btn-warning text-light mt-2" href="./expenses/new" role="button">新增支出</a>
+  </div>
 </div>

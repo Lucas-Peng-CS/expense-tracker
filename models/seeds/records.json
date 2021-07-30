@@ -1,43 +1,37 @@
 [
   {
     "name": "午餐",
-    "target": "皇家便當",
     "category": "餐飲食品",
     "date": "2021/06/23",
     "amount": 60
   },
   {
     "name": "晚餐",
-    "target": "家家牛肉麵",
     "category": "餐飲食品",
     "date": "2021/06/23",
     "amount": 60
   },
   {
     "name": "捷運",
-    "target": "台北",
-    "category": "交通出行 ",
+    "category": "交通出行",
     "date": "2021/06/23",
     "amount": 120
   },
   {
     "name": "電影 : 復仇者聯盟",
-    "target": "華納影城",
-    "category": "休閒娛樂 ",
+    "category": "休閒娛樂",
     "date": "2021/06/23",
     "amount": 220
   },
   {
     "name": "租金",
-    "target": "房東",
-    "category": "家居物業 ",
+    "category": "家居物業",
     "date": "2021/06/01",
     "amount": 25000
   },
   {
     "name": "書籍費",
-    "target": "博客來",
-    "category": "其它 ",
+    "category": "其他",
     "date": "2021/06/01",
     "amount": 500
   }
