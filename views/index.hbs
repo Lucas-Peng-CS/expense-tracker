@@ -24,40 +24,38 @@
   </div>
 
   <div class="row">
-    <div class="col-4 mx-auto table-striped">
+    <div class="col-5 mx-auto table-striped">
       <table class="w-100">
         <tbody>
-  {{#each records}}
-  <tr>
-  <td class=" pt-2 text-center">
-  
-  {{#each ../categories}}
-  {{!-- handlebars-helper is 功能  a === b 就渲染 --}}
-  {{#is ../this.category this.name}}
-  <span style="color:rgb(0, 174, 255)">{{{this.icon}}}</span>
-  {{/is}}
-  {{/each}}
-  </td>
-  <td>
-  <div class="d-flex flex-column py-1">
-  <span>{{this.name}}</span>
-  <small>{{this.date}}</small>
-  </div>
-  </td>
-  <td class="text-right pr-2">
-  {{this.amount}}
-  </td>
-  
+          {{#each records}}
+            <tr>
+              <td class=" pt-2 text-center">
 
-  </tr>
-  {{/each}}
-  </tbody>
-  </table>
-  
-  
-  </div>
+                {{#each ../categories}}
+                  {{!-- handlebars-helper is 功能  a === b 就渲染 --}}
+                  {{#is ../this.category this.name}}
+                    <span style="color:rgb(0, 174, 255)">{{{this.icon}}}</span>
+                  {{/is}}
+                {{/each}}
+              </td>
+              <td>
+                <div class="d-flex flex-column py-1">
+                  <span>{{this.name}}</span>
+                  <small>{{this.date}}</small>
+                </div>
+              </td>
+              <td class="text-right">
+                {{this.amount}}
+                <a class="btn btn-success btn-sm ml-2 mr-1" href="/expenses/{{this._id}}/edit" role="button">修改</a>
+                <a class="btn btn-danger btn-sm mr-2" href="/expenses/{{this._id}}/edit" role="button">刪除</a>
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
   </div>
   <div class="text-center">
-  <a class="btn btn-warning text-light mt-2" href="./expenses/new" role="button">新增支出</a>
+    <a class="btn btn-warning text-light mt-2" href="./expenses/new" role="button">新增支出</a>
   </div>
 </div>

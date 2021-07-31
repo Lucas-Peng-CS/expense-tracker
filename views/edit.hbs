@@ -1,7 +1,7 @@
-<form class="w-25 mx-auto" action="/expenses" method="POST">
+<form class="w-25 mx-auto" action="/expenses/{{record._id}}?_method=PUT" method="POST">
   <div class="remind my-3">
-    <span>*必填欄位</span>
-    <span class="ml-5">請輸入你的支出</span>
+    <span style="color: red;">*必填欄位</span>
+    <span class="ml-5">請修改你的支出</span>
   </div>
 
   <div class="form-group d-flex text-nowrap">
@@ -12,6 +12,7 @@
       name="name"
       id="name"
       placeholder="請輸入開支名稱..."
+      value="{{record.name}}"
       required
     />
   </div>
@@ -19,7 +20,7 @@
   <div class="form-group d-flex text-nowrap">
     <label for="category" class="align-self-end">類別* :</label>
     <select class="custom-select ml-4" name="category" id="category" required>
-      <option value="" selected disabled>Select</option>
+      <option value="{{record.category}}" selected disabled >{{record.category}}</option>
       {{#each categories}}
       <option value="{{this.name}}">{{this.name}}</option>
       {{/each}}
@@ -33,7 +34,8 @@
       class="form-control ml-4"
       name="date"
       id="date"
-      value="{{currentDate}}"
+      placeholder="請輸入開支日期..."
+      value="{{record.date}}"
       required
     />
   </div>
@@ -47,6 +49,7 @@
       id="amount"
       placeholder="請輸入開支金額..."
       min="0"
+      value="{{record.amount}}"
       required
     />
   </div>
@@ -56,7 +59,7 @@
       id="submit-btn"
       type="submit"
       class="btn btn-warning text-light w-75"
-    >新增支出</button>
+    >送出</button>
   </div>
 
 </form>
