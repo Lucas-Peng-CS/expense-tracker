@@ -46,8 +46,45 @@
               </td>
               <td class="text-right">
                 {{this.amount}}
-                <a class="btn btn-success btn-sm ml-2 mr-1" href="/expenses/{{this._id}}/edit" role="button">修改</a>
-                <a class="btn btn-danger btn-sm mr-2" href="/expenses/{{this._id}}/edit" role="button">刪除</a>
+                <a class="btn btn-primary btn-sm ml-2 mr-1" href="/expenses/{{this._id}}/edit" role="button">
+                  修改
+                </a>
+                <button type="button" class="btn btn-danger btn-sm mr-1" data-toggle="modal" data-target="#modal-{{this._id}}">
+                  刪除
+                </button>
+  
+                <!-- Modal -->
+                <div class="modal fade" id="modal-{{this._id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">{{this.name}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body text-center">
+                        確定要刪除{{this.name}}嗎?
+                      </div>
+                      <div class="modal-footer align-items-center">
+                        <button type="button" class="btn btn-secondary btn-sm " data-dismiss="modal">取消</button>
+                        <form
+                          class="my-auto"
+                          action="/expenses/{{this._id}}?_method=DELETE"
+                          method="POST"
+                          style=""
+                          >
+                          <button
+                            type="submit"
+                            class="btn btn-danger btn-sm mr-1"
+                            >刪除
+                          </button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
               </td>
             </tr>
           {{/each}}
