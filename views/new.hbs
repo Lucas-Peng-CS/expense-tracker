@@ -1,6 +1,6 @@
 <form class="w-25 mx-auto" action="/expenses" method="POST">
   <div class="remind my-3">
-    <span>*必填欄位</span>
+    <span style="color: red;">*必填欄位</span>
     <span class="ml-5">請輸入你的支出</span>
   </div>
 
@@ -19,9 +19,10 @@
   <div class="form-group d-flex text-nowrap">
     <label for="category" class="align-self-end">類別* :</label>
     <select class="custom-select ml-4" name="category" id="category" required>
+      {{! selected disabled 選擇功能關閉 }}
       <option value="" selected disabled>Select</option>
       {{#each categories}}
-      <option value="{{this.name}}">{{this.name}}</option>
+        <option value="{{this.name}}">{{this.name}}</option>
       {{/each}}
     </select>
   </div>

@@ -1,16 +1,19 @@
 <div class="container">
   <div class="row ">
     <div class="col-4 mx-auto">
-      <form action="">
+      <form action="/">
         <div class="form-group">
-          <select class="form-control mt-4" id="exampleFormControlSelect1">
-            {{!-- selected disabled 選擇功能關閉 --}}
-            <option selected disabled>類別</option>
-            <option value="家居物業">家居物業</option>
-            <option value="交通出行">交通出行</option>
-            <option value="休閒娛樂">休閒娛樂</option>
-            <option value="餐飲食品">餐飲食品</option>
-            <option value="其他">其他</option>
+          <select class="form-control mt-4" name="category" id="category" onchange="submit()">
+            <option value="">全部</option>
+            {{#each categories}}
+            <option 
+              value="{{this.name}}"
+              {{#is ../category this.name}}
+              selected
+              {{/is}}>
+              {{this.name}}
+            </option>
+            {{/each}}
           </select>
         </div>
       </form>
@@ -30,11 +33,12 @@
           {{#each records}}
             <tr>
               <td class=" pt-2 text-center">
-
                 {{#each ../categories}}
                   {{!-- handlebars-helper is 功能  a === b 就渲染 --}}
                   {{#is ../this.category this.name}}
-                    <span style="color:rgb(0, 174, 255)">{{{this.icon}}}</span>
+                  <span 
+                    style="color:rgb(0, 174, 255)">{{{this.icon}}}
+                  </span>
                   {{/is}}
                 {{/each}}
               </td>
@@ -64,7 +68,7 @@
                         </button>
                       </div>
                       <div class="modal-body text-center">
-                        確定要刪除{{this.name}}嗎?
+                        確定要刪除【{{this.name}}】嗎?
                       </div>
                       <div class="modal-footer align-items-center">
                         <button type="button" class="btn btn-secondary btn-sm " data-dismiss="modal">取消</button>
@@ -72,7 +76,6 @@
                           class="my-auto"
                           action="/expenses/{{this._id}}?_method=DELETE"
                           method="POST"
-                          style=""
                           >
                           <button
                             type="submit"

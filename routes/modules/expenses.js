@@ -8,20 +8,23 @@ router.get('/new', (req, res) => {
   const currentDate = formatDate(date);
   function formatDate (date) {
     let month = date.getMonth() + 1
+    let day = date.getDate()
     month = month < 10 ? '0' + month : month;
-    return date.getFullYear() + "-" + month + "-" + date.getDate()
+    day = day < 10 ? "0" + day : day;
+    return date.getFullYear() + "-" + month + "-" + day
   }
   Category.find()
     .lean()
     .then((categories) => res.render("new", { categories, currentDate }))
     .catch((error) => console.error(error));
 })
+
 router.post('/', (req, res) => {
-  const data = req.body
-  return Record.create(data)
-    .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
+  return Record.create(req.body)
+    .then(() => res.redirect("/"))
+    .catch((error) => console.log(error));
 })
+
 router.get('/:id/edit', (req, res) => {
   const id = req.params.id
   return Record.findById(id)
@@ -29,12 +32,11 @@ router.get('/:id/edit', (req, res) => {
     .then((record) => {
       Category.find()
         .lean()
-        .then((categories) =>
-          res.render("edit", { record, categories })
-        );
+        .then((categories) => res.render("edit", { record, categories }));
     })
     .catch((error) => console.log(error));
 })
+
 router.put('/:id', (req, res) => {
   const id = req.params.id
   return Record.findById(id)
@@ -45,6 +47,7 @@ router.put('/:id', (req, res) => {
     .then(() => res.redirect('/'))
     .catch((error) => console.log(error));
 })
+
 router.delete('/:id', (req, res) => {
   const id = req.params.id
   return Record.findById(id)

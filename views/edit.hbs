@@ -20,9 +20,13 @@
   <div class="form-group d-flex text-nowrap">
     <label for="category" class="align-self-end">類別* :</label>
     <select class="custom-select ml-4" name="category" id="category" required>
-      <option value="{{record.category}}" selected disabled >{{record.category}}</option>
       {{#each categories}}
-      <option value="{{this.name}}">{{this.name}}</option>
+      <option value="{{this.name}}" 
+        {{#is ../record.category this.name}}
+        selected
+        {{/is}}>
+        {{this.name}}
+      </option>
       {{/each}}
     </select>
   </div>

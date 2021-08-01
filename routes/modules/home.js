@@ -4,23 +4,25 @@ const Record = require("../../models/record");
 const Category = require("../../models/category");
 
 router.get("/", (req, res) => {
-  let totalAmount = 0;
   Category.find()
     .lean()
     .then((categories) => {
-      Record.find()
+      const filter = {};
+      const category = req.query.category
+      if (category) filter.category = category
+      Record.find(filter)
         .lean()
         .sort({ date: "desc" })
         .then((records) => {
-          records.forEach((record) => {
-            totalAmount += record.amount;
-          });
+          let totalAmount = 0;
+          records.forEach((record) => totalAmount += record.amount);
           res.render("index", {
             records,
             categories,
             totalAmount,
+            category,
           });
-        });
+        })
     })
     .catch((error) => console.error(error));
 });
